@@ -1,0 +1,9 @@
+streamlit
+pandas
+plotly
+matplotlib
+seaborn
+numpy
+geopandas
+streamlit-option-menu
+pydeck
