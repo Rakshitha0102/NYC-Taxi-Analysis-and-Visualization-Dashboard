@@ -8,3 +8,7 @@ matplotlib
 seaborn
 streamlit-option-menu
 gdown
+fiona
+shapely
+pyproj
+rtree
