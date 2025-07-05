@@ -52,8 +52,8 @@ MONTHS = {
 @st.cache_data
 def read_df(month_number):
     filename = f"yellow_trip_data_2023-0{month_number}.csv"
+    st.write("Loading file:", os.path.join(TAXI_DATA_FOLDER, filename))
     return pd.read_csv(os.path.join(TAXI_DATA_FOLDER, filename))
-st.write("Loading file:", os.path.join(TAXI_DATA_FOLDER, filename))
 
 data = pd.DataFrame({
     'x': range(10),
