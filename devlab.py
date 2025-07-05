@@ -29,7 +29,7 @@ if not os.path.exists(EXTRACT_DIR):
 # Update paths to refer to extracted files
 TAXI_ZONE_PATH = os.path.join(EXTRACT_DIR, "taxinyc", "taxi_zones.shp")
 TAXI_DATA_FOLDER = os.path.join(EXTRACT_DIR, "taxi")  # contains monthly .csvs
-FREQ_TABLE_PATH = "frequency_table.csv"
+
 #########################################
 st.set_page_config(
     page_title="Dashboard",
