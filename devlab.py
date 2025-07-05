@@ -8,7 +8,28 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import numpy as np
 import matplotlib.cm as cm
+import zipfile
+import gdown
+import os
 
+# Set the file ID of your Google Drive ZIP file
+FILE_ID = "1w_wA8_1P7Dzca2F4AzXXckMWaS4svQn4"
+ZIP_PATH = "taxi_zone.zip"
+EXTRACT_DIR = "data"
+
+# Download and extract ZIP only if not already done
+if not os.path.exists(EXTRACT_DIR):
+    st.info("Downloading dataset...")
+    gdown.download(f"https://drive.google.com/uc?id={FILE_ID}", ZIP_PATH, quiet=False)
+
+    st.info("Extracting files...")
+    with zipfile.ZipFile(ZIP_PATH, 'r') as zip_ref:
+        zip_ref.extractall(EXTRACT_DIR)
+
+# Update paths to refer to extracted files
+TAXI_ZONE_PATH = os.path.join(EXTRACT_DIR, "taxinyc", "taxi_zones.shp")
+TAXI_DATA_FOLDER = os.path.join(EXTRACT_DIR, "taxi")  # contains monthly .csvs
+FREQ_TABLE_PATH = "frequency_table.csv"
 #########################################
 st.set_page_config(
     page_title="Dashboard",
@@ -25,8 +46,9 @@ MONTHS = {
     "June":6
 }
 
+@st.cache_data
 def read_df(month_number):
-    return pd.read_csv(r"G:\sem\sem4\DEV\taxi".format(month_number))
+    return pd.read_csv(os.path.join(TAXI_DATA_FOLDER, f"{month_number}.csv"))
 
 data = pd.DataFrame({
     'x': range(10),
@@ -384,7 +406,7 @@ def create_donut_chart_time_of_day(df):
 
 def show_zones_map():
     # Load the taxi zone dataset
-    taxi_zones = gpd.read_file('D:/dev/taxinyc/taxi_zones.shp')
+    taxi_zones = gpd.read_file(TAXI_ZONE_PATH)
 
     # Calculate centroids
     taxi_zones['centroid'] = taxi_zones.geometry.centroid
@@ -517,11 +539,12 @@ def show_zones_map():
         st.plotly_chart(fig4)
 
 ######################################################################
-taxi_zones = gpd.read_file('D:/dev/taxinyc/taxi_zones.shp')
+taxi_zones = gpd.read_file(TAXI_ZONE_PATH)
 
     # Calculate centroids
 taxi_zones['centroid'] = taxi_zones.geometry.centroid
-contingency_df=pd.read_csv(r"D:\dev\frequency_table.csv")
+contingency_df = pd.read_csv("https://raw.githubusercontent.com/Rakshitha0102/NYC-Taxi-Analysis-and-Visualization-Dashboard/main/frequency_table.csv")
+
 contingency_df.drop(columns=['Unnamed: 0'], inplace=True)
 location_id_to_zone = taxi_zones.set_index('LocationID')['zone'].to_dict()
 
