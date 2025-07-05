@@ -1,9 +1,10 @@
 streamlit
 pandas
+numpy
 plotly
+pydeck
+geopandas
 matplotlib
 seaborn
-numpy
-geopandas
 streamlit-option-menu
-pydeck
+gdown
