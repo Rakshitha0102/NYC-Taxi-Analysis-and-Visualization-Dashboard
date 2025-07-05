@@ -1,4 +1,4 @@
-st.set_option('client.showErrorDetails', True)
+
 
 import streamlit as st
 import pandas as pd
@@ -13,6 +13,7 @@ import matplotlib.cm as cm
 import zipfile
 import gdown
 import os
+st.set_option('client.showErrorDetails', True)
 
 # Set the file ID of your Google Drive ZIP file
 FILE_ID = "1w_wA8_1P7Dzca2F4AzXXckMWaS4svQn4"
