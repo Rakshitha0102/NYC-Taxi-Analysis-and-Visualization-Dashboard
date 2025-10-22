@@ -1,7 +1,7 @@
 
 # 📊 NYC Taxi Data Dashboard
 
-This project is a **Streamlit dashboard** for analyzing and visualizing **NYC Yellow Taxi trip data** (January–June 2023). It features dynamic insights on trip frequency, fare composition, taxi zones, and pickup-dropoff patterns.
+This project is a **Streamlit dashboard** for analyzing and visualizing **NYC Yellow Taxi trip data** (January–June 2024). It features dynamic insights on trip frequency, fare composition, taxi zones, and pickup-dropoff patterns.
 
 ---
 
@@ -21,7 +21,7 @@ All trip data is publicly available via the **NYC Taxi & Limousine Commission (T
 
 🔗 [NYC TLC Trip Record Data](https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page)
 
-> 📥 Download monthly Yellow Taxi data for **2023** in CSV format (e.g., `yellow_tripdata_2023-01.csv`, `yellow_tripdata_2023-02.csv`, etc.).
+> 📥 Download monthly Yellow Taxi data for **2024** in CSV format (e.g., `yellow_tripdata_2024-01.csv`, `yellow_tripdata_2024-02.csv`, etc.).
 
 ---
 
@@ -52,7 +52,7 @@ project/
    ```
 
 3. **Ensure the following files and folders exist:**
-   - `/taxi/`: Contains Yellow Taxi monthly data for 2023
+   - `/taxi/`: Contains Yellow Taxi monthly data for 2024
    - `/taxinyc/taxi_zones.shp`: NYC Taxi Zones shapefile
    - `frequency_table.csv`: Dropoff frequency matrix
 
