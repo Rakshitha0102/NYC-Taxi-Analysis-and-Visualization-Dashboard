@@ -51,7 +51,7 @@ MONTHS = {
 
 @st.cache_data
 def read_df(month_number):
-    filename = f"yellow_trip_data_2023-0{month_number}.csv"
+    filename = f"yellow_trip_data_2024-0{month_number}.csv"
     st.write("Loading file:", os.path.join(TAXI_DATA_FOLDER, filename))
     return pd.read_csv(os.path.join(TAXI_DATA_FOLDER, filename))
 
@@ -88,7 +88,7 @@ def format_number(num):
 def overview_create_line_chart(df, month_number, line_color):
     df['tpep_pickup_datetime'] = pd.to_datetime(df['tpep_pickup_datetime'])
 
-    df_month = df[(df['tpep_pickup_datetime'] >= '2023-0{}-01'.format(month_number)) & (df['tpep_pickup_datetime'] < '2023-0{}-01'.format(month_number+1))]
+    df_month = df[(df['tpep_pickup_datetime'] >= '2024-0{}-01'.format(month_number)) & (df['tpep_pickup_datetime'] < '2024-0{}-01'.format(month_number+1))]
     df_month = df_month['tpep_pickup_datetime']
 
     trips_per_day = df_month.groupby(df_month.dt.date).size().reset_index(name='Trip Count')
@@ -292,7 +292,7 @@ def show_overview():
             st.metric(label="Total Fare Collected", value="$" + total_fare, delta=total_fare_delta)
         
     with col[1]:
-        st.markdown('#### Trips Per Day in {} 2023'.format(selected_month))
+        st.markdown('#### Trips Per Day in {} 2024'.format(selected_month))
         if MONTHS[selected_month] == 1:
             overview_create_line_chart(df, MONTHS[selected_month], line_color)
         else:
@@ -300,7 +300,7 @@ def show_overview():
 
         
     with col[2]:
-        st.markdown('#### Distribtion of Trips in {} 2023'.format(selected_month))
+        st.markdown('#### Distribtion of Trips in {} 2024'.format(selected_month))
         if MONTHS[selected_month] == 1:
             create_donut_chart_overview(df)
         else:
@@ -317,11 +317,11 @@ def show_comparison():
         selected_comparison_month2 = st.selectbox('Select Month 2', months)
 
     with col[1]:
-        st.markdown('#### {} 2023'.format(selected_comparison_month1))
+        st.markdown('#### {} 2024'.format(selected_comparison_month1))
         plot_comparison_graphs(selected_comparison_month1)
         
     with col[2]:
-        st.markdown('#### {} 2023'.format(selected_comparison_month2))
+        st.markdown('#### {} 2024'.format(selected_comparison_month2))
         plot_comparison_graphs(selected_comparison_month2)
 
 
@@ -645,4 +645,5 @@ if option == "Trip Planner":
 
 
 #########################################
+
 
